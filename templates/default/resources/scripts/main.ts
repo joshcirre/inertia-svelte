@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { createInertiaApp } from '@inertiajs/inertia-svelte'
 import { importPageComponent } from '@/scripts/vite/import-page-component'
 import { InertiaProgress } from '@inertiajs/progress'

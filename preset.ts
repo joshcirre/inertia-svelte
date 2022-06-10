@@ -183,7 +183,6 @@ async function installInertia(tailwindcss: boolean) {
 						match: /vite-plugin-laravel/,
 						lines: [
 							"import {svelte} from '@sveltejs/vite-plugin-svelte'",
-							"import inertia from './resources/scripts/vite/inertia-layout'",
 						],
 					},
 					{
