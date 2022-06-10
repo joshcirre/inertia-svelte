@@ -1,5 +1,5 @@
 <script context="module">
-  import Layout from "@/layouts/default.svelte";
+  import Layout from "@/views/layouts/default.svelte";
   export const layout = Layout;
 </script>
 
