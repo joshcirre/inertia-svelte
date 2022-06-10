@@ -195,6 +195,14 @@ async function installInertia(tailwindcss: boolean) {
 							'svelte(),',
 						],
 					},
+                    {
+                        type: 'add-line',
+                        position: 'before',
+                        match: /plugins\:/,
+                        lines: [
+                            "optimizeDeps: { include: [ '@inertiajs/inertia', ]},"
+                        ],
+                    }
 				],
 			})
 
@@ -206,6 +214,16 @@ async function installInertia(tailwindcss: boolean) {
 						{ type: 'remove-line', match: /<style>/, start: -1, count: 4 },
 					],
 				})
+
+                await editFiles({
+                    title: 'edit TailwindCSS config',
+                    files: 'tailwind.config.js',
+                    operations: [
+                        {
+                            type: 'update-content',
+                            update: (content) => content.replace('vue', 'svelte'),
+                        },],
+                })
 			}
 		},
 	})
