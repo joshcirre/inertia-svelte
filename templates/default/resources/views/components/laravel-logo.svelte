@@ -1,4 +1,10 @@
+<script>
+  let className = "";
+  export { className as class };
+</script>
+
 <svg
+  class={className}
   viewBox="0 0 651 192"
   fill="currentColor"
   xmlns="http://www.w3.org/2000/svg"

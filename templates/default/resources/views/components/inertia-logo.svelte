@@ -1,4 +1,9 @@
-<svg viewBox="0 0 275.3 50.5">
+<script>
+  let className = "";
+  export { className as class };
+</script>
+
+<svg class={className} viewBox="0 0 275.3 50.5">
   <path
     d="M231.2 16.1h-17.8l17.2 17.2-17.2 17.2h17.8l17.2-17.2z"
     fill="currentColor"

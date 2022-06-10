@@ -219,10 +219,8 @@ async function installInertia(tailwindcss: boolean) {
                     title: 'edit TailwindCSS config',
                     files: 'tailwind.config.js',
                     operations: [
-                        {
-                            type: 'update-content',
-                            update: (content) => content.replace('vue', 'svelte'),
-                        },],
+                        { type: 'update-content', update: (content) => content.replace('vue', 'svelte'), },
+                    ],
                 })
 			}
 		},
