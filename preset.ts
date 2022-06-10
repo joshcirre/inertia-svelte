@@ -190,7 +190,6 @@ async function installInertia(tailwindcss: boolean) {
 						position: 'before',
 						match: /laravel\(/,
 						lines: [
-							'inertia(),',
 							'svelte(),',
 						],
 					},
