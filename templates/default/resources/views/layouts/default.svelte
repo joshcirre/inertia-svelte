@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script>
 // This is a peristent layout
-// Include me with <template layout="default" />
+// Include me with export const layout = layout in script with context of module
 </script>
 
 <template>

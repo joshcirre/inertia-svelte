@@ -46,11 +46,12 @@ async function installInertia(tailwindcss: boolean) {
 			await installPackages({
 				for: 'node',
 				packages: [
-					'vue@next',
-					'@vue/compiler-sfc',
-					'@vitejs/plugin-vue',
+					'svelte',
+					'svelte-loader',
+					'@sveltejs/vite-plugin-svelte',
+                    '@inertiajs/progress',
 					'@inertiajs/inertia',
-					'@inertiajs/inertia-vue3',
+					'@inertiajs/inertia-svelte',
 				],
 				dev: true,
 			})
@@ -65,12 +66,12 @@ async function installInertia(tailwindcss: boolean) {
 							...json,
 							dependencies: {
 								...json.dependencies,
-								'vue': json.devDependencies.vue,
+								'svelte': json.devDependencies.svelte,
 								'@inertiajs/inertia': json.devDependencies['@inertiajs/inertia'],
-								'@inertiajs/inertia-vue3': json.devDependencies['@inertiajs/inertia-vue3'],
+								'@inertiajs/inertia-svelte': json.devDependencies['@inertiajs/inertia-svelte'],
 							},
 							devDependencies: {
-								...omit(json.devDependencies, 'vue', '@inertiajs/inertia', '@inertiajs/inertia-vue3'),
+								...omit(json.devDependencies, 'svelte', '@inertiajs/inertia', '@inertiajs/inertia-svelte'),
 							},
 						}),
 					},
@@ -93,7 +94,7 @@ async function installInertia(tailwindcss: boolean) {
 			})
 
 			await editFiles({
-				title: 'udpate route file',
+				title: 'update route file',
 				files: 'routes/web.php',
 				operations: [{ type: 'update-content', update: (r) => r.replace("view('welcome')", "inertia('welcome')") }],
 			})
@@ -181,7 +182,7 @@ async function installInertia(tailwindcss: boolean) {
 						position: 'after',
 						match: /vite-plugin-laravel/,
 						lines: [
-							"import vue from '@vitejs/plugin-vue'",
+							"import {svelte} from '@sveltejs/vite-plugin-svelte'",
 							"import inertia from './resources/scripts/vite/inertia-layout'",
 						],
 					},
@@ -191,7 +192,7 @@ async function installInertia(tailwindcss: boolean) {
 						match: /laravel\(/,
 						lines: [
 							'inertia(),',
-							'vue(),',
+							'svelte(),',
 						],
 					},
 				],
@@ -200,7 +201,7 @@ async function installInertia(tailwindcss: boolean) {
 			if (tailwindcss) {
 				await editFiles({
 					title: 'remove inline CSS',
-					files: 'resources/views/layouts/default.vue',
+					files: 'resources/views/layouts/default.svelte',
 					operations: [
 						{ type: 'remove-line', match: /<style>/, start: -1, count: 4 },
 					],
